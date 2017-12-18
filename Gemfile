@@ -8,6 +8,7 @@ gem 'sqlite3'
 gem 'devise', '~> 4.3'
 gem 'omniauth', '~> 1.7.0'
 gem 'omniauth-facebook', '~> 4.0'
+gem 'devise_invitable', '~> 1.5', '>= 1.5.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
