@@ -1,0 +1,57 @@
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :video %><br>
+    <%= f.text_field :video %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<div id='video-message'>
+  <div id='players' style="text-align: center;">
+    <video class='recorder' autoplay="", loop="", muted="", height="480", width="640"></video>
+    <audio class='recorder' autoplay="", loop="", muted=""></audio>
+  </div>
+  <div class='actions' id='buttons' style="text-align: center; padding: 1em;">
+    <button id='record_button' type="button" class="save-button">Start Recording</button>
+    <button id='play_button' type="button" class="send-button">Play</button>
+  </div>
+</div>
+<% if @can_submit_message %>
+  <button id="upload_button" type="button" class="send-button" title="Are you sure you're ready to send this message?">Send</button>
+<% end %>
+
+<!-- #video-message
+  #players{style: 'text-align: center;'}
+    %video.recorder{autoplay: '', loop: '', muted: '', height: '480', width: '640'}
+    %audio.recorder{autoplay: '', loop: '', muted: ''}
+  #buttons.actions{style: 'text-align: center; padding: 1em;'}
+    %button#record_button{type: 'button', class: 'save-button'} Start Recording
+    %button#play_button{type: 'button', class: 'send-button'} Play
+    -if @can_submit_message
+      %button#upload_button{type: 'button', class: 'send-button', title: "Are you sure you're ready to send this message?", data: {confirm: "You won't be able to edit anymore."}} Send -->

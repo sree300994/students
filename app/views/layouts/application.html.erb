@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style>
+<!-- 	<style>
 		table {
 			background-color: blue;
 		}
@@ -12,23 +12,40 @@
 			color: orange;
 			text-align: center;
 		}
-	</style>
+	</style> -->
   <title>Students</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="../recordrtc.js" /></script>
+  <script src="../whammy.js" /></script>
+  <!-- <script src="/assests/javascripts/video.js" /></script> -->
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<% if user_signed_in? %>
-	  <%= current_user.email %>
-	  <%= link_to "Edit Account", edit_user_registration_path %>
-	  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-	<% else %>
-	  <%= link_to "Login", new_user_session_path %> | <%= link_to "Register", new_user_registration_path %> | <%#= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-	<% end %>
-	<!-- <script>
+<div class="container">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <% if user_signed_in? %>
+  	  <%= current_user.email %>
+  	  <%= link_to "Edit Account", edit_user_registration_path %>
+  	  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+  	<% else %>
+  	  <%= link_to "Login", new_user_session_path %> | <%= link_to "Register", new_user_registration_path %> | <%#= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  	<% end %>
+    <p><%= link_to "Events", events_path %></p>
+  	
+  <%= yield %>
+</div>
+
+</body>
+</html>
+<!-- <script>
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -103,7 +120,3 @@
     });
   }
 </script> -->
-<%= yield %>
-
-</body>
-</html>

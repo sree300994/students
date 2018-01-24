@@ -1,0 +1,50 @@
+<div class="jumbotron" style="background-image: url('../pexel.jpeg'); background-position: 0% 25%; background-size: cover; color: white; text-shadow: black 0.4em 0.4em 0.4em; width: 100%; height: 100%">
+	<p>
+	  <h1 class="text-center"><strong>Name:</strong>
+	  <%= @event.name %></h1>
+	</p>
+
+<!-- 	<p>
+	  <strong>Start date:</strong>
+	  <%= @event.start_date %>
+	  <span id="start"></span>
+	</p> -->
+	<!-- <div id="countdown">
+  		<div id='demo'></div>
+  		<div class="labels">
+    	<li>Days</li>
+    	<li>Hours</li>
+    	<li>Mins</li>
+    	<li>Secs</li>
+  	</div>
+</div> -->
+	<h1 id="demo" class="text-center"></h1>
+</div>
+	<%= link_to 'Edit', edit_event_path(@event) %> |
+	<%= link_to 'Back', events_path %>
+
+<script>
+var countDownDate = new Date("<%= @event.start_date %>").getTime();
+console.log(new Date("<%= @event.start_date %>"));
+
+var time = setInterval(function() {
+
+    var today = new Date().getTime();
+    // console.log(today);
+    
+    var distance = ((countDownDate - today) / 1000) - 19800;
+   
+    var days = Math.floor(distance / (60 * 60 * 24));
+    var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
+    var minutes = Math.floor((distance % (60 * 60)) / (60));
+    var seconds = Math.floor(distance % (60));
+    
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+     
+    if (distance < 0) {
+        clearInterval(time);
+        document.getElementById("demo").innerHTML = "Enjoy The Party!!";
+    }
+}, 1000);
+</script>

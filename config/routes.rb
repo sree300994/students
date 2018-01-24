@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :messages
+  resources :events
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :invitations => 'users/invitations' }
   resources :students
   # The priority is based upon order of creation: first created -> highest priority.
